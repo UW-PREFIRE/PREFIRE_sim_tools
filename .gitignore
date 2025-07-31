@@ -79,7 +79,6 @@ scripts/output
 *.nc
 *.png
 
-doc/build
 downloaded_list*.txt
 
 # Things that would otherwise be excluded:

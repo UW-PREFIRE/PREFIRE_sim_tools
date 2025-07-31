@@ -1,0 +1,102 @@
+{
+"_JSON_COMMENTS_": {
+  "purpose": {"to_describe": "the metadata and form of a NetCDF-format file"},
+
+  "abbrev_widget_len": {
+       "units": "cubits",
+       "long_name": "abbreviated widget length",
+       "description": "an arbitrary example of a data variable",
+       "C_dimensions": ["atrack", "xtrack"],
+       "F_dimensions": ["xtrack", "atrack"],
+       "np_dtype": "float32", "fill_value": -9.999e3,
+       "compression": [4, true] },
+
+  "C_dimensions_are": { "for": "Python, C, C++, etc." },
+  "F_dimensions_are": { "for": "Fortran, MatLab, IDL, etc." },
+  "can_have_either": { "or_both_types": "of dimension definition" },
+  "for_an_unlimited_dimension": { "add_a_prefix_eg": "!U!time" },
+
+  "Global_Attributes": { "group": "can be empty or omitted" },
+  "xxxxx_Group_Attributes": { "group": "can omit/empty, xxxxx is group name" },
+  "eg_value_known_globalgroup_att": { "value": 3.14159 },
+  "eg_value_pending_globalgroup_att": { "value": "!to_be_set!" } 
+},
+
+
+"Global_Attributes": {
+    "Format": {"value": "netCDF-4"},
+    "summary": {"value": "!to_be_set!"},
+    "full_versionID": {"value": "!to_be_set!"},
+    "archival_versionID": {"value": "!to_be_set!"},
+    "granule_ID": {"value": "!to_be_set!"},
+    "provenance": {"value": "!to_be_set!"},
+    "file_name": {"value": "!to_be_set!"},
+    "input_product_files": {"value": "!to_be_set!"},
+    "processing_algorithmID": {"value": " "},
+    "processing_level": {"value": "2B"},
+    "UTC_of_file_creation": {"value": "!to_be_set!"},
+    "spacecraft_ID": {"value": "!to_be_set!"},
+    "sensor_ID": {"value": "!to_be_set!"},
+    "ctime_coverage_start_s": {"value": "!to_be_set!"},
+    "ctime_coverage_end_s": {"value": "!to_be_set!"},
+    "UTC_coverage_start": {"value": "!to_be_set!"},
+    "UTC_coverage_end": {"value": "!to_be_set!"},
+    "additional_file_description": {"value": " "},
+    "netCDF_lib_version": {"value": "!to_be_set!"},
+    "orbit_sim_version": {"value": "!to_be_set!"},
+    "SRF_NEdR_version": {"value": "!to_be_set!"},
+    "is_this_a_final_product_file": {"value": "no"}
+},
+
+
+"SimRad-FullRes": {
+    "radiance": {
+             "units": "mW/(sr m2 1/cm)",
+             "long_name": "radiance",
+             "description": "radiance at full spectral resolution (i.e., PCRTM output using CLARREO 0.5 cm^-1 spectral resolution)",
+             "C_dimensions": ["atrack", "xtrack", "spectral"],
+             "np_dtype": "float32", "fill_value": -9.999e3,
+             "compression": [4, true] },
+    "wavenum": {
+             "units": "1/cm",
+             "long_name": "wavenumber",
+             "description": "wavenumber associated with full spectral-resolution radiances",
+             "C_dimensions": ["spectral"],
+             "np_dtype": "float32", "fill_value": -9.999e3,
+             "compression": [4, true] }
+},
+
+
+"SimRad-TIRSRes": {
+    "spectral_radiance": {
+             "units": "W/(sr m2 um)",
+             "long_name": "spectral radiance",
+             "description": "radiance convolved to TIRS resolution using the specified SRF",
+             "C_dimensions": ["atrack", "xtrack", "spectral"],
+             "np_dtype": "float32", "fill_value": -9.999e3,
+             "compression": [4, true] },
+    "wavelength": {
+             "units": "um",
+             "long_name": "wavelength",
+             "description": "center wavelength of each spectral channel, given by the SRF-weighted mean over wavelength",
+             "C_dimensions": ["xtrack", "spectral"],
+             "F_dimensions": ["spectral", "xtrack"],
+             "np_dtype": "float32", "fill_value": -9.999e3,
+             "compression": [4, true] },
+    "idealized_wavelength": {
+             "units": "um",
+             "long_name": "wavelength",
+             "description": "center wavelength of each spectral channel, in the idealized spectrometer grid",
+             "C_dimensions": ["xtrack", "spectral"],
+             "F_dimensions": ["spectral", "xtrack"],
+             "np_dtype": "float32", "fill_value": -9.999e3,
+             "compression": [4, true] },
+    "detector_bitflags": {
+             "long_name": "detector bitflags",
+             "description": "integer composed of bit flags that contain boolean info about each TIRS channel/scene combination, for this granule",
+             "value_meaning": "(b0) detector masked?, (b1) extreme noise or unresponsive detector?, (b2) greater-noise category?, (b3) unreliable calibration?",
+             "C_dimensions": ["xtrack", "spectral"],
+             "np_dtype": "uint16", "fill_value": 65535,
+             "compression": [4, true] }
+}
+}
